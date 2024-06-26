@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RICERCA OPI POS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        #risultato {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        // Lista di errori e le relative OPI
+        var errori = {
+            "Imei non valido": "OPI AAAA",
+            "Nessuna linea vendibile": "OPI BBBB",
+            // Aggiungi qui altri errori
+        };
+
+        function decodificaErrore() {
+            var errore = document.getElementById('errore').value;
+            var erroreDecodificato = errori[errore];
+            if (erroreDecodificato) {
+                document.getElementById('risultato').innerHTML = erroreDecodificato;
+            } else {
+                document.getElementById('risultato').innerHTML = "Errore non riconosciuto";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>RICERCA OPI POS</h1>
+        <select id="errore">
+            <option value="">Seleziona un errore</option>
+            <option value="Imei non valido">Imei non valido</option>
+            <option value="Nessuna linea vendibile">Nessuna linea vendibile</option>
+            <!-- Aggiungi qui altri errori -->
+        </select>
+        <button onclick="decodificaErrore()">Ricerca</button>
+        <div id="risultato"></div>
+    </div>
+</body>
+</html>
